@@ -4,7 +4,6 @@ html, body {
   padding: 0;
 }
 ul,li{
-  display: block;
   list-style: none;
 }
 
@@ -19,7 +18,9 @@ ul,li{
 
 
 
-
+footer{
+  border: 1px solid black;
+}
 
 
 
@@ -33,17 +34,11 @@ ul,li{
   align-items: center;
 }
 
-
-
-
-
-
-
 .nav-container{
   width: 100%;
 }
 .nav{
-  border:  1px solid tomato;
+  /* border:  3px solid tomato; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -54,18 +49,3 @@ ul.nav li:nth-child(2) { margin-left: 3rem; }
 ul.nav li:nth-child(3) { margin: 2.6rem; }       
 ul.nav li:nth-child(4) { margin-right: 3rem; }   
 ul.nav li:nth-child(5) { margin-right: 3.7rem; }  
-
-
-/* 
-.nav-box{
-  height: 10vh;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-} */
-
-
-
-
-
