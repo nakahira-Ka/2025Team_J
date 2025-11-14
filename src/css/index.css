@@ -4,7 +4,6 @@ html, body {
   padding: 0;
 }
 ul,li{
-  display: block;
   list-style: none;
 }
 a{
@@ -15,14 +14,13 @@ a{
 
 
 /* 画面 */
-html{
+body{
   background-color: #F9C045;
 }
 .top{
   text-align: center;
 }
-a{
-  
+.top a{
   display: block;
   width: 100vw;
   height: 100vh; 
