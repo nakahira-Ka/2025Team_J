@@ -10,7 +10,7 @@ const center = { lat: 34.6937, lng: 135.5023 }; // 大阪初期位置
 
 export default function Recruitment() {
     const { isLoaded } = useJsApiLoader({
-        googleMapsApiKey: "AIzaSyAuGKjTtiGSbAFW-ky8XUw4tMqXh7b-7vkj", // ご自身のAPIキーに置き換え
+        googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY, // ご自身のAPIキーに置き換え
     });
 
     const [marker, setMarker] = useState(null); // 選択したピン

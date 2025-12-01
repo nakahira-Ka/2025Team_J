@@ -3,7 +3,7 @@ import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyDjDzuveYRJhZQR1BF8JQli9pnYupewpmSc",
+    apiKey: process.env.FIREBASE_API_KEY,
     authDomain: "matchingplay-1b6be.firebaseapp.com",
     projectId: "matchingplay-1b6be",
     storageBucket: "matchingplay-1b6be.appspot.com",
