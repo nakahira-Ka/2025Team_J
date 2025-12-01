@@ -51,11 +51,11 @@ const Map = () => {
       //マーカークリック → 下部に情報表示
       eccMarker.addListener("click", () => {
         setSelectedPlace({
-          dayandtime:"11月25日18:00~20:00",
+          dayandtime: "11月25日18:00~20:00",
           name: "ボードゲームを楽しもう",
           address: "大阪市北区中崎西2丁目",
           description: "初めての人でも歓迎",
-          price:"1人1000円",
+          price: "1人1000円",
         });
       });
 
@@ -90,6 +90,9 @@ const Map = () => {
     // Google Maps API読み込み
     const script = document.createElement("script");
     const key = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
+    console.log(key);
+
+
     script.src = `https://maps.googleapis.com/maps/api/js?key=${key}&callback=initMap`;
     script.async = true;
     window.initMap = loadMap;
@@ -105,15 +108,15 @@ const Map = () => {
 
       {selectedPlace && (
         <div id="info-box">
-        <button className="close-btn" onClick={() => setSelectedPlace(null)}>×</button>
-        <h2>{selectedPlace.name}</h2>
-        <p>{selectedPlace.dayandtime}</p>
-        <p>住所　{selectedPlace.address}</p>
-        <p>値段　{selectedPlace.price}</p>
-        <p>{selectedPlace.description}</p>
-        <p className="join-btn"><Link to="/chat">参加する</Link></p>
-      </div>
-      
+          <button className="close-btn" onClick={() => setSelectedPlace(null)}>×</button>
+          <h2>{selectedPlace.name}</h2>
+          <p>{selectedPlace.dayandtime}</p>
+          <p>住所　{selectedPlace.address}</p>
+          <p>値段　{selectedPlace.price}</p>
+          <p>{selectedPlace.description}</p>
+          <p className="join-btn"><Link to="/chat">参加する</Link></p>
+        </div>
+
       )}
     </>
   );
