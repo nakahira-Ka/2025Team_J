@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
 import Recruitment from "./pages/Recruitment";
+import Chat from "./pages/Chat";
+import Profile from "./pages/Profile";
 
 const App = () => {
   return (
@@ -12,6 +14,8 @@ const App = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/home" element={<Home />} />
         <Route path="/recruitment" element={<Recruitment />} />
+        <Route path="/chat" element={<Chat />} />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
     </Router>
   );
