@@ -1,42 +1,36 @@
-footer{
+/* === footer.css === */
+
+footer {
   position: fixed;
-}
-.nav-box{
-  position: fixed;
-  height: 10vh;
+  bottom: 0;
+  left: 0;
   width: 100%;
-  background-color: #FFECB2;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background: white;
+  z-index: 9999;   /* マップより必ず前面に表示 */
+  border-top: 1px solid #ddd;
 }
 
-.nav-container{
+.nav-box {
   width: 100%;
 }
 
-.nav{
+.nav-container {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 10px 0;
+}
+
+.nav {
+  list-style: none;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  margin: 0;
 }
 
-
-.material-symbols-outlined {
-  font-size: 30px; 
-  font-variation-settings:
-    'FILL' 0,
-    'wght' 400,
-    'GRAD' 0,
-    'opsz' 24;
+.nav li img,
+.nav li span {
+  width: 32px;
+  height: 32px;
+  display: block;
 }
-
-ul.nav li:nth-child(3) .material-symbols-outlined {
-  font-size: 43px;
-}
-
-ul.nav li:nth-child(1) { margin-left: 3.7rem; }
-ul.nav li:nth-child(2) { margin-left: 3rem; }
-ul.nav li:nth-child(3) { margin: 2.6rem; }
-ul.nav li:nth-child(4) { margin-right: 3rem; }
-ul.nav li:nth-child(5) { margin-right: 3.7rem; }
