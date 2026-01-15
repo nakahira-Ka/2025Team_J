@@ -15,6 +15,7 @@ import {
 
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
+
 // -------------- ヘッダー ---------------- //
 const ChatHeader = () => {
   const [open, setOpen] = useState(false);
@@ -40,20 +41,22 @@ const ChatHeader = () => {
   );
 };
 
+
+
 // -------------- メイン Chat ---------------- //
 const Chat = () => {
   const [text, setText] = useState("");
   const [keyboardOpen, setKeyboardOpen] = useState(false);
   const [messages, setMessages] = useState([]);
 
-  const galleryInputRef = useRef(null);
-  const cameraInputRef = useRef(null);
-
-  const bottomRef = useRef(null);
   const [modalImage, setModalImage] = useState(null);
 
+  const galleryInputRef = useRef(null);
+  const cameraInputRef = useRef(null);
+  const bottomRef = useRef(null);
+
   // ---------------------------------------------
-  // Firestore メッセージ取得（1回だけ）
+  // Firestore メッセージ取得（リアルタイム）
   // ---------------------------------------------
   useEffect(() => {
     const q = query(collection(db, "messages"), orderBy("createdAt", "asc"));
@@ -65,7 +68,7 @@ const Chat = () => {
       }));
       setMessages(msgs);
 
-      // スクロールを最新へ
+      // 最新メッセージへスクロール
       setTimeout(() => {
         bottomRef.current?.scrollIntoView({ behavior: "smooth" });
       }, 50);
@@ -98,9 +101,7 @@ const Chat = () => {
 
     try {
       const storageRef = ref(storage, `images/${Date.now()}_${file.name}`);
-
       await uploadBytes(storageRef, file);
-
       const url = await getDownloadURL(storageRef);
 
       await addDoc(collection(db, "messages"), {
@@ -114,14 +115,15 @@ const Chat = () => {
   };
 
   // ---------------------------------------------
-  // スマホキーボード検知（vh対策含む）
+  // スマホキーボード検知 & --vh対策
   // ---------------------------------------------
   useEffect(() => {
     const setAppHeight = () => {
-      const vh = window.innerHeight * 0.01;
-      document.documentElement.style.setProperty("--vh", `${vh}px`);
+      document.documentElement.style.setProperty(
+        "--vh",
+        `${window.innerHeight * 0.01}px`
+      );
     };
-
     setAppHeight();
     window.addEventListener("resize", setAppHeight);
 
@@ -138,9 +140,6 @@ const Chat = () => {
     };
   }, []);
 
-  // ---------------------------------------------
-  // 描画
-  // ---------------------------------------------
   return (
     <main className={keyboardOpen ? "keyboard-open" : ""}>
       <div className="chat-box">
@@ -156,13 +155,13 @@ const Chat = () => {
               }`}
             >
               {msg.text && <p>{msg.text}</p>}
-            
+
               {msg.imageUrl && (
                 <img
                   src={msg.imageUrl}
                   alt=""
                   className="chat-image"
-                  onClick={() => setModalImage(msg.imageUrl)}   // ← 追加
+                  onClick={() => setModalImage(msg.imageUrl)}
                 />
               )}
             </div>
@@ -170,8 +169,7 @@ const Chat = () => {
           <div ref={bottomRef}></div>
         </div>
 
-
-        {/* ギャラリー／カメラ */}
+        {/* 隠し input */}
         <input
           type="file"
           accept="image/*"
@@ -189,7 +187,7 @@ const Chat = () => {
           onChange={handleImageUpload}
         />
 
-        {/* フッター（送信欄） */}
+        {/* フッター */}
         <div className="chat-footer">
           <span
             className="material-symbols-outlined"
@@ -220,12 +218,13 @@ const Chat = () => {
       </div>
 
       {!keyboardOpen && <FooterNav />}
+
+      {/* -------- モーダル（画像拡大） -------- */}
       {modalImage && (
         <div className="modal-overlay" onClick={() => setModalImage(null)}>
           <img src={modalImage} className="modal-image" />
         </div>
       )}
-
     </main>
   );
 };

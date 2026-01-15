@@ -19,6 +19,7 @@ body{
 }
 .top{
   text-align: center;
+  margin-top: 20rem;
 }
 .top a{
   display: block;
@@ -26,3 +27,59 @@ body{
   height: 100vh; 
   padding-top: 40%;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background-color: #F9C045;
+}
+
+
+.top {
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  gap: 24px;
+}
+
+
+.google-login {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 10px 16px;
+  border: 1px solid #dadce0;
+  border-radius: 4px;
+
+  background-color: #ffffff;
+  color: #3c4043;
+
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.google-login img {
+  width: 18px;
+  height: 18px;
+} */

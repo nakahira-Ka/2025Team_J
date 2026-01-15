@@ -1,182 +1,152 @@
 /* =========================================================
   基本リセット
-   ========================================================= */
-  html, body #root, main{
-    /* height: 100%; */
-    height: 100vh;
-    margin: 0;
-    padding: 0;
-  }
-  
-  ul, li {
-    list-style: none;
-  }
-  
-  a {
-    text-decoration: none;
-    color: #000;
-  }
-  main {
-    display: flex;
-    flex-direction: column;
-    /* height: 100vh; */
-    /* height: 100%; */
-    height: calc(var(--vh, 1vh) * 100); 
-  }
-  main:not(.keyboard-open) {
-    padding-bottom: 10vh;
-  }
-  /* =========================================================
-    チャット全体のレイアウト
-     ========================================================= */
-  .chat-box {
-    display: flex;
-    flex-direction: column;
-    /* height: 90vh; */
-    height:100%;
-    border: 1px solid tomato;
-  }
-  
-  
-  /* =========================================================
-    Header（ルーム名＋アコーディオン）
-     ========================================================= */
-  
-  /* --- 基本部分 --- */
-  .chat-header {
-    background-color: #fff;
-    padding: 15px;
-    border: 3px solid tomato;
-  }
-  
-  .chat-header h1{
-    font-size: 30px;
-  }
-  
-  .chat-header-top {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    cursor: pointer;
-    padding: 1em;
-    background: #fff;
-  }
-  
-  .chat-header-top:hover {
-    background: #fff;
-  }
-  
-  /* --- アコーディオン部分 --- */
-  .chat-detail {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease;
-    background: #fff;
-    padding: 0 1em;
-    display: flex;
-    gap: 1rem;
-  }
-  
-  .chat-detail.open {
-    max-height: 200px;
-    padding: 1em;
-  }
-  
-  
-  /* =========================================================
-    メイン（メッセージ一覧）
-     ========================================================= */
-  
-  /* .messages {
-    flex: 1;
-    overflow-y: auto;
-    border: 5px solid green;
-  } */
-  .messages {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    overflow-y: scroll;
-  }
-  /* モーダル */
-  .modal-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.7);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 50;
-  }
-  
-  .modal-image {
-    max-width: 90%;
-    max-height: 90%;
-    border-radius: 10px;
-  }
-  
-  
-  /* メッセージの吹き出し */
-  .message-bubble {
-    max-width: 70%;
-    padding: 10px;
-    margin: 8px 0;
-    border-radius: 12px;
-    background: #e5e5e5;
-  }
-  
-  .message-bubble.right {
-    margin-left: auto;
-    background: #d1f1ff;
-  }
-  
-  .message-bubble.left {
-    margin-right: auto;
-    background: #f0f0f0;
-  }
-  
-  /* 画像メッセージ */
-  .chat-image {
-    max-width: 100%;
-    border-radius: 8px;
-    margin-top: 5px;
-  }
-  
-  
-  /* =========================================================
-    Footer（入力欄・アイコン）
-     ========================================================= */
-  .chat-footer {
-    background-color: #fff;
-    height: 5.4vh;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 0 10px;
-  }
-  
-  /* 入力欄 */
-  .chat-footer input {
-    border: 1px solid black;
-    height: 2.2rem;
-    width: 100%;
-    border-radius: 5rem;
-    padding: 0 15px;
-    flex: 1;
-    box-sizing: border-box;
-  }
-  
-  /* アイコンそれぞれのサイズ */
-  .chat-footer span:nth-of-type(1) {
-    font-size: 30px;
-  }
-  .chat-footer span:nth-of-type(2) {
-    font-size: 40px;
-  }
-  .chat-footer span:nth-of-type(3) {
-    font-size: 22px;
-  }
-  
+========================================================= */
+html, body, #root, main {
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  height: calc(var(--vh, 1vh) * 100);
+}
+
+main:not(.keyboard-open) {
+  padding-bottom: 10vh;
+}
+
+/* =========================================================
+  チャット全体
+========================================================= */
+.chat-box {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* =========================================================
+  Header
+========================================================= */
+.chat-header {
+  background-color: #fff;
+  padding: 15px;
+  border-bottom: 1px solid #ccc;
+}
+
+.chat-header h1 {
+  font-size: 30px;
+}
+
+.chat-header-top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  padding: 1em;
+}
+
+/* アコーディオン */
+.chat-detail {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .3s ease;
+  padding: 0 1em;
+  display: flex;
+  gap: 1rem;
+}
+
+.chat-detail.open {
+  max-height: 200px;
+  padding: 1em;
+}
+
+/* =========================================================
+  メッセージ一覧
+========================================================= */
+.messages {
+  position: relative;
+  width: 100%;
+  flex: 1;
+  overflow-y: scroll;
+}
+
+/* -------- モーダル（画像拡大） -------- */
+.modal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+}
+
+.modal-image {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 10px;
+}
+
+/* -------- 吹き出し -------- */
+.message-bubble {
+  max-width: 70%;
+  padding: 10px;
+  margin: 8px 0;
+  border-radius: 12px;
+  background: #e5e5e5;
+}
+
+.message-bubble.right {
+  margin-left: auto;
+  background: #d1f1ff;
+}
+
+.message-bubble.left {
+  margin-right: auto;
+  background: #f0f0f0;
+}
+
+/* 画像メッセージ */
+.chat-image {
+  max-width: 100%;
+  border-radius: 8px;
+  margin-top: 5px;
+  cursor: pointer;
+}
+
+/* =========================================================
+  Footer
+========================================================= */
+.chat-footer {
+  background-color: #fff;
+  height: 5.4vh;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 10px;
+}
+
+.chat-footer input {
+  border: 1px solid #333;
+  height: 2.2rem;
+  width: 100%;
+  border-radius: 5rem;
+  padding: 0 15px;
+  flex: 1;
+}
+
+/* アイコンサイズ */
+.chat-footer span:nth-of-type(1) {
+  font-size: 30px;
+}
+.chat-footer span:nth-of-type(2) {
+  font-size: 40px;
+}
+.chat-footer span:nth-of-type(3) {
+  font-size: 22px;
+}
