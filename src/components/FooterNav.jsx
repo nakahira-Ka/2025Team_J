@@ -9,7 +9,7 @@ const FooterNav = () => {
       <div className="nav-box">
         <div className="nav-container">
           <ul className="nav">
-            <li><Link to="/login"><img src="/img/home.png" alt="home" /></Link></li>
+            <li><Link to="/home"><img src="/img/home.png" alt="home" /></Link></li>
             <li><Link to="/home"><img src="/img/kennsaku.png" alt="search" /></Link></li>
             <li><Link to="/recruitment"><img src="/img/tuika.png" alt="add" /></Link></li>
             <li><Link to="/chat"><span className="material-symbols-outlined">chat</span></Link></li>

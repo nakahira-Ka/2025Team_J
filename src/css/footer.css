@@ -1,6 +1,9 @@
-footer{
+/* footer{
+  background-color: tomato;
   position: fixed;
-}
+  bottom: 0;
+  width: 100%; 
+}*/
 .nav-box{
   position: fixed;
   height: 10vh;
