@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "../css/ress.css";
 import "../css/chat.css";
 import FooterNav from "../components/FooterNav";
@@ -22,6 +23,7 @@ const ChatHeader = () => {
 
   return (
     <div className="chat-header">
+      <div className="chat-header-top" onClick={() => setOpen(!open)}>
       <div className="chat-header-top" onClick={() => setOpen(!open)}>
         <h1>ボードゲームを楽しもう</h1>
 
@@ -138,8 +140,16 @@ const Chat = () => {
       window.removeEventListener("resize", setAppHeight);
       window.removeEventListener("resize", handleResize);
     };
+
+    return () => {
+      window.removeEventListener("resize", setAppHeight);
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
 
+  // ---------------------------------------------
+  // 描画
+  // ---------------------------------------------
   return (
     <main className={keyboardOpen ? "keyboard-open" : ""}>
       <div className="chat-box">
@@ -202,15 +212,33 @@ const Chat = () => {
           >
             photo_camera
           </span>
+          <span
+            className="material-symbols-outlined"
+            onClick={() => galleryInputRef.current.click()}
+          >
+            photo
+          </span>
+
+          <span
+            className="material-symbols-outlined"
+            onClick={() => cameraInputRef.current.click()}
+          >
+            photo_camera
+          </span>
 
           <input
             type="text"
             value={text}
             onChange={(e) => setText(e.target.value)}
             onKeyDown={(e) => e.key === "Enter" && handleSend()}
+            onChange={(e) => setText(e.target.value)}
+            onKeyDown={(e) => e.key === "Enter" && handleSend()}
             placeholder="メッセージを入力"
           />
 
+          <span className="material-symbols-outlined" onClick={handleSend}>
+            send
+          </span>
           <span className="material-symbols-outlined" onClick={handleSend}>
             send
           </span>
