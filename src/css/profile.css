@@ -1,0 +1,35 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+ul,li{
+  list-style: none;
+}
+a{
+  text-decoration: none;
+  color: #000;
+}
+.profile-box{
+  display: block;
+  height: 90vh;
+}
+
+
+
+.profile-header{
+  /* height: 20vh;
+  background-color: #fff; */
+}
+
+
+.profile-main{
+  height: 80vh;
+  background-color: #bbbbbb;
+  padding-left: 3.8rem;
+}
+.profile-main img {
+  border-radius: 50%;
+  width: 88px;
+  /* margin-left: 29px; */
+}

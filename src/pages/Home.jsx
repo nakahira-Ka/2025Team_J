@@ -2,7 +2,7 @@ import React from "react";
 import "../css/ress.css";
 import "../css/map.css";
 import FooterNav from "../components/FooterNav";
-import Map from "../components/Map"; 
+import Map from '../components/Map';
 
 const Home = () => {
   return (

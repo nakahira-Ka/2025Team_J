@@ -7,7 +7,7 @@ const Login = () => {
   return (
     <div className="top">
       <Link to="/home">
-        <h1>aaaaa11111</h1>
+        <h1>あそ募</h1>
       </Link>
     </div>
   );
