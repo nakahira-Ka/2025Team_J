@@ -73,7 +73,7 @@ const Map = () => {
               map: map,
               title: "現在地",
               icon: {
-                url: "/img/hito.png",
+                url: "public/img/hito.png",
                 scaledSize: new window.google.maps.Size(40, 40),
               },
             });
@@ -90,7 +90,6 @@ const Map = () => {
     // Google Maps API読み込み
     const script = document.createElement("script");
     const key = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
-    console.log(key);
 
 
     script.src = `https://maps.googleapis.com/maps/api/js?key=${key}&callback=initMap`;

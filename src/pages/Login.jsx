@@ -1,14 +1,30 @@
 import React from "react";
-import "../css/ress.css";
-import "../css/index.css";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { auth, provider } from "../firebase";
+import { signInWithPopup } from "firebase/auth";
 
 const Login = () => {
+  const navigate = useNavigate();
+
+  const handleGoogleLogin = async () => {
+    try {
+      await signInWithPopup(auth, provider);
+      navigate("/home"); 
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <div className="top">
-      <Link to="/home">
-        <h1>あそ募</h1>
-      </Link>
+      <h1>あそ募</h1>
+
+      <button className="google-login" onClick={handleGoogleLogin}>
+        <img
+          src="/img/web_neutral_sq_SI@1x.png"
+          alt="Sign in with Google"
+        />
+      </button>
     </div>
   );
 };

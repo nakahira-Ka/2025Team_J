@@ -1,17 +1,36 @@
-// src/firebase.js
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
+import { getStorage } from "firebase/storage";
+import {
+    getAuth,
+    GoogleAuthProvider,
+    setPersistence,
+    browserLocalPersistence,
+} from "firebase/auth";
 
 const firebaseConfig = {
-    apiKey: process.env.FIREBASE_API_KEY,
-    authDomain: "matchingplay-1b6be.firebaseapp.com",
-    projectId: "matchingplay-1b6be",
-    storageBucket: "matchingplay-1b6be.appspot.com",
-    messagingSenderId: "510138932844",
-    appId: "1:510138932844:web:231071be8393gda317c249"
+    apiKey: process.env.REACT_APP_Firebase_API_KEY,
+    authDomain: "teamprj-3b76f.firebaseapp.com",
+    projectId: "teamprj-3b76f",
+    storageBucket: "teamprj-3b76f.firebasestorage.app",
+    messagingSenderId: "76899211170",
+    appId: "1:76899211170:web:af3e358254700b8de0c4fb",
+    measurementId: "G-J9GC2EX0ER",  
 };
 
 const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
 
-export { app, db };
+export const db = getFirestore(app);
+export const storage = getStorage(app);
+
+export const auth = getAuth(app);
+
+setPersistence(auth, browserLocalPersistence).catch((error) => {
+    console.error("Persistence設定エラー:", error);
+});
+
+export const provider = new GoogleAuthProvider();
+
+provider.setCustomParameters({
+    prompt: 'select_account'
+});

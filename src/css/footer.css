@@ -1,11 +1,12 @@
-/* footer{
-  background-color: tomato;
+footer{
   position: fixed;
   bottom: 0;
-  width: 100%; 
-}*/
+  left: 0;
+  width: 100%;
+  background: white;
+  z-index: 9999; 
+}
 .nav-box{
-  position: fixed;
   height: 10vh;
   width: 100%;
   background-color: #FFECB2;
@@ -29,7 +30,7 @@
   font-size: 30px; 
   font-variation-settings:
     'FILL' 0,
-    'wght' 400,
+    'wght' 800,
     'GRAD' 0,
     'opsz' 24;
 }
